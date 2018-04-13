@@ -78,6 +78,7 @@ class BuildController extends BaseController
     {
         $arr = $request->all();
        // var_dump($arr);
+       if(isset($arr['id'])){
         unset($arr['_token']);
         $build = new Build();
         $img = new Image();
@@ -97,6 +98,9 @@ class BuildController extends BaseController
         }
 
         return redirect(url('admin/oper'))->with('mi','删除成功');
+    }else{
+         return redirect(url('admin/oper'))->with('mi','没有选择图片');
+    }
 
 
     }
